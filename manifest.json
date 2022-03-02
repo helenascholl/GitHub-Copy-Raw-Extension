@@ -1,0 +1,13 @@
+{
+  "manifest_version": 2,
+  "name": "GitHub Copy Raw",
+  "version": "1.0",
+  "description": "Adds a button for copying the raw content of a file to GitHub",
+  "homepage_url": "https://github.com/schollsebastian/GitHub-Copy-Raw-Extension#readme",
+  "content_scripts": [
+    {
+      "matches": [ "https://github.com/*" ],
+      "js": [ "src/copy-button.js" ]
+    }
+  ]
+}
