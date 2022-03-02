@@ -28,6 +28,41 @@ function addCopyButton(parent) {
   parent.appendChild(button);
 }
 
+async function fetchRawContent() {
+  const idle = document.getElementById('copy-raw-idle');
+  const fetching = document.getElementById('copy-raw-fetching');
+  const success = document.getElementById('copy-raw-success');
+  const error = document.getElementById('copy-raw-error');
+
+  idle.style.display = 'none';
+  fetching.style.display = '';
+
+  try {
+    const response = await fetch(getRawContentUrl());
+
+    fetching.style.display = 'none';
+
+    if (response.status === 200) {
+      success.style.display = '';
+      navigator.clipboard.writeText(await response.text());
+    } else {
+      error.style.display = '';
+    }
+
+  } catch (e) {
+    console.error(e);
+
+    fetching.style.display = 'none';
+    error.style.display = '';
+  } finally {
+    setTimeout(() => {
+      success.style.display = 'none';
+      error.style.display = 'none';
+      idle.style.display = '';
+    }, 2000);
+  }
+}
+
 function getRawContentUrl() {
   const path = window.location.href.split('/');
   path[5] = 'raw';
