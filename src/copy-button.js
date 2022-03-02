@@ -16,14 +16,10 @@ function checkForParent() {
 function addCopyButton(parent) {
   const button = document.createElement('button');
 
-  button.innerText = 'Copy';
-  button.classList.add('btn-octicon', 'tooltipped', 'copy-raw');
-  button.addEventListener('click', e => {
-    fetch(getRawContentUrl())
-      .then(async content => {
-        navigator.clipboard.writeText(await content.text());
-      });
-  });
+  button.classList.add('btn-octicon', 'copy-raw');
+  button.addEventListener('click', fetchRawContent);
+
+  addIcons(button);
 
   parent.appendChild(button);
 }
