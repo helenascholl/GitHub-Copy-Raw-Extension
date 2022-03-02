@@ -30,6 +30,6 @@ function addCopyButton(parent) {
 
 function getRawContentUrl() {
   const path = window.location.href.split('/');
-  path[6] = 'raw';
+  path[5] = 'raw';
   return path.join('/');
 }
