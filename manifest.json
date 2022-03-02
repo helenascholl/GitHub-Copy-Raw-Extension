@@ -4,6 +4,10 @@
   "version": "1.0",
   "description": "Adds a button for copying the raw content of a file to GitHub",
   "homepage_url": "https://github.com/schollsebastian/GitHub-Copy-Raw-Extension#readme",
+  "permissions": [
+    "clipboardWrite",
+    "https://raw.githubusercontent.com/*"
+  ],
   "content_scripts": [
     {
       "matches": [ "https://github.com/*" ],
